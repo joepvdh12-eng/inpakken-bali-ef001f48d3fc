@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#1e3a3c" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>Inpakken voor Bali</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,640;1,9..144,500&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #1f1810;
+    --ink-soft: #5a4d3e;
+    --paper: #f6efe2;
+    --sand: #e8dcc8;
+    --wood: #c9a978;
+    --wood-dark: #9a7548;
+    --ocean: #1e6b6f;
+    --ocean-deep: #163f42;
+    --coral: #c45c38;
+    --leaf: #3d6b4f;
+    --gold: #d4a24a;
+    --leather: #6b3f2e;
+    --shell: #c4a06a;
+    --shell-dark: #8b5a2b;
+    --canvas: #355c57;
+    --canvas-light: #4a7a73;
+    --white: #fffaf3;
+    --shadow: rgba(40, 28, 16, 0.22);
+    --ok: #2f7a54;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { min-height: 100%; }
+  body {
+    font-family: Outfit, system-ui, sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(1200px 500px at 50% -10%, #2a6a6e 0%, transparent 55%),
+      linear-gradient(180deg, #1e3a3c 0%, #2c5354 180px, #d9c7a3 180px, #e8dcc8 100%);
+    overflow-x: hidden;
+  }
+  button { font-family: inherit; cursor: pointer; }
+  h1, h2, .display { font-family: Fraunces, Georgia, serif; }
+
+  header {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 28px 24px 8px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    color: var(--white);
+  }
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.78;
+    font-weight: 500;
+  }
+  h1 {
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 640;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-top: 6px;
+  }
+  .stats {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(255,250,243,0.12);
+    border: 1px solid rgba(255,250,243,0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 999px;
+    padding: 8px 8px 8px 18px;
+  }
+  .days strong { font-family: Fraunces, serif; font-size: 22px; display: block; line-height: 1; }
+  .days span { font-size: 11px; opacity: 0.8; letter-spacing: 0.06em; text-transform: uppercase; }
+  .ring-wrap { position: relative; width: 64px; height: 64px; }
+  .ring-wrap svg { width: 64px; height: 64px; transform: rotate(-90deg); }
+  .ring-wrap em {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-style: normal; font-size: 11px; font-weight: 600;
+  }
+
+  .table-wrap {
+    max-width: 1100px;
+    margin: 24px auto 0;
+    padding: 0 16px 80px;
+  }
+  .table {
+    background:
+      repeating-linear-gradient(90deg, rgba(90,55,25,0.05) 0 2px, transparent 2px 18px),
+      linear-gradient(180deg, #debf8d 0%, #c9a978 40%, #b89463 100%);
+    border-radius: 28px 28px 18px 18px;
+    box-shadow:
+      0 30px 60px rgba(40, 28, 16, 0.28),
+      inset 0 1px 0 rgba(255,255,255,0.45);
+    padding: 28px 20px 24px;
+    position: relative;
+  }
+  .table::before {
+    content: "";
+    position: absolute; left: 8%; right: 8%; top: -14px; height: 14px;
+    background: #2c5354;
+    border-radius: 8px 8px 0 0;
+    opacity: 0.35;
+  }
+
+  .bags {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    min-height: 340px;
+    align-items: end;
+  }
+  .bag {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 8px 8px 12px;
+    border: 0;
+    background: transparent;
+    color: var(--ink);
+    border-radius: 20px;
+    transition: transform 0.45s cubic-bezier(.2,1.2,.2,1);
+    min-height: 320px;
+  }
+  .bag:focus-visible { outline: 2px solid var(--ocean); outline-offset: 4px; }
+  .bag.focused { transform: translateY(-10px) scale(1.03); z-index: 2; }
+  .bag.catch .visual { animation: catch 0.45s cubic-bezier(.2,1.4,.3,1); }
+  @keyframes catch {
+    0% { transform: scale(1); }
+    35% { transform: scale(1.07, 0.94); }
+    70% { transform: scale(0.97, 1.04); }
+    100% { transform: scale(1); }
+  }
+  @keyframes dropIn {
+    from { opacity: 0; transform: translateY(36px) scale(0.92); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .bag[data-bag="docs"] .visual { animation: dropIn 0.8s cubic-bezier(.2,1.3,.3,1) both; }
+  .bag[data-bag="carry"] .visual { animation: dropIn 0.8s 0.12s cubic-bezier(.2,1.3,.3,1) both; }
+  .bag[data-bag="case"] .visual { animation: dropIn 0.8s 0.24s cubic-bezier(.2,1.3,.3,1) both; }
+  .bag.catch .visual { animation: catch 0.45s cubic-bezier(.2,1.4,.3,1); }
+
+  .visual { width: 100%; max-width: 280px; height: 230px; position: relative; }
+  .label {
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .label small {
+    display: block;
+    font-weight: 400;
+    color: var(--ink-soft);
+    font-size: 12px;
+    margin-top: 1px;
+  }
+
+  /* Wallet */
+  .wallet-body {
+    position: absolute; left: 14%; right: 12%; top: 28px; bottom: 16px;
+    background: linear-gradient(145deg, #7a4a36, var(--leather) 45%, #4a2a1e);
+    border-radius: 16px;
+    box-shadow: 8px 12px 0 rgba(0,0,0,0.12), 0 16px 24px var(--shadow);
+    border: 2px solid #3a2016;
+  }
+  .wallet-inner {
+    position: absolute; inset: 12px;
+    background: #c9ae86;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .passport {
+    position: absolute; left: 12px; top: 16px;
+    width: 72px; height: 100px;
+    background: linear-gradient(160deg, #1d4f8a, #163a68);
+    border-radius: 6px;
+    border: 1.5px solid #0f2748;
+    color: #f0e6c8;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 8px; font-size: 7px; letter-spacing: 0.12em;
+    font-weight: 600;
+    transform: rotate(-6deg);
+    box-shadow: 2px 3px 0 rgba(0,0,0,0.2);
+  }
+  .passport .crest {
+    width: 22px; height: 22px; border: 1.5px solid #f0e6c8; border-radius: 50%;
+  }
+  .passport-page {
+    position: absolute; left: 76px; top: 22px;
+    width: 68px; height: 96px;
+    background: var(--white);
+    border-radius: 0 6px 6px 0;
+    border: 1px solid #d9d0c0;
+    transform-origin: left center;
+    animation: pageOpen 1s 0.5s cubic-bezier(.2,1.2,.2,1) both;
+    background-image: repeating-linear-gradient(#e8e0d4 0 1px, transparent 1px 14px);
+    background-position: 8px 20px; background-size: 50px 100%; background-repeat: no-repeat;
+  }
+  @keyframes pageOpen {
+    from { transform: rotateY(-70deg) rotate(-2deg); opacity: 0.3; }
+    to { transform: rotateY(0) rotate(8deg); opacity: 1; }
+  }
+  .boarding {
+    position: absolute; left: 36px; bottom: 16px;
+    width: 132px; height: 52px;
+    background: var(--white);
+    border-radius: 5px;
+    border: 1.5px solid var(--ink);
+    padding: 6px 8px 6px 18px;
+    font-size: 8px;
+    line-height: 1.25;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    animation: slidePass 0.8s 0.85s cubic-bezier(.2,1.1,.2,1) both;
+    color: var(--ink);
+    text-align: left;
+  }
+  .boarding::before {
+    content: "";
+    position: absolute; left: 8px; top: 4px; bottom: 4px;
+    border-left: 1.5px dashed #b0a696;
+  }
+  .boarding b { display: block; font-size: 10px; font-family: Fraunces, serif; }
+  @keyframes slidePass {
+    from { transform: translateX(-30px) rotate(-8deg); opacity: 0; }
+    to { transform: translateX(0) rotate(-4deg); opacity: 1; }
+  }
+  .wallet-tag {
+    position: absolute; right: 10%; top: 18px;
+    width: 28px; height: 18px;
+    background: var(--gold);
+    border: 1px solid #8a6a20;
+    border-radius: 2px;
+    font-size: 6px; font-weight: 700; letter-spacing: 0.08em;
+    display: flex; align-items: center; justify-content: center;
+    animation: sway 3.2s ease-in-out infinite;
+    transform-origin: top center;
+  }
+  @keyframes sway {
+    0%, 100% { transform: rotate(-8deg); }
+    50% { transform: rotate(10deg); }
+  }
+
+  /* Carry bag */
+  .carry-strap {
+    position: absolute; left: 22%; top: 8px;
+    width: 10px; height: 150px;
+    border: 6px solid #2a3f3c;
+    border-right: 0; border-bottom: 0;
+    border-radius: 40px 0 0 0;
+    transform: rotate(-18deg);
+  }
+  .carry-body {
+    position: absolute; left: 22%; right: 20%; top: 36px; bottom: 10px;
+    background: linear-gradient(180deg, var(--canvas-light), var(--canvas));
+    border-radius: 18px 18px 22px 22px;
+    border: 2.5px solid #1d3230;
+    box-shadow: 6px 14px 0 rgba(0,0,0,0.1), 0 16px 24px var(--shadow);
+  }
+  .carry-handle {
+    position: absolute; left: 38%; right: 36%; top: 22px; height: 22px;
+    border: 5px solid #1d3230;
+    border-bottom: 0;
+    border-radius: 12px 12px 0 0;
+  }
+  .carry-mouth {
+    position: absolute; left: 26%; right: 24%; top: 48px; height: 22px;
+    background: #1a2c2a;
+    border-radius: 50%;
+    animation: unzip 0.9s 0.45s cubic-bezier(.2,1.2,.2,1) both;
+    overflow: hidden;
+  }
+  @keyframes unzip {
+    from { height: 6px; }
+    to { height: 28px; }
+  }
+  .carry-mouth span {
+    display: block; height: 100%;
+    background: linear-gradient(#2a1810, #4a3020);
+    margin: 0 10px;
+    border-radius: 50%;
+  }
+  .carry-pocket {
+    position: absolute; left: 30%; right: 28%; top: 42%; height: 34%;
+    border: 1.8px solid #1d3230;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.12);
+  }
+  .carry-fill {
+    position: absolute; left: 28%; right: 26%; bottom: 18px;
+    height: 0%;
+    max-height: 42%;
+    background: linear-gradient(180deg, #e8c07a, #c45c38);
+    border-radius: 6px 6px 8px 8px;
+    transition: height 0.6s cubic-bezier(.2,1.1,.2,1);
+  }
+  .zip-pull {
+    position: absolute; width: 8px; height: 14px;
+    background: var(--gold); border-radius: 2px; border: 1px solid #6a5018;
+    top: 54px;
+    animation: zipMove 0.9s 0.45s cubic-bezier(.2,1.2,.2,1) both;
+  }
+  .zip-pull.l { left: 36%; }
+  .zip-pull.r { right: 34%; }
+  @keyframes zipMove {
+    from { transform: translateX(20px); }
+    to { transform: translateX(0); }
+  }
+  .zip-pull.r { animation-name: zipMoveR; }
+  @keyframes zipMoveR {
+    from { transform: translateX(-20px); }
+    to { transform: translateX(0); }
+  }
+
+  /* Suitcase */
+  .case-lid {
+    position: absolute; left: 10%; right: 10%; top: 6px; height: 46%;
+    background: linear-gradient(180deg, #e0c38a, var(--shell));
+    border: 2.5px solid var(--shell-dark);
+    border-radius: 16px 16px 4px 4px;
+    transform-origin: bottom center;
+    animation: lidOpen 1.15s 0.35s cubic-bezier(.2,1.35,.3,1) both;
+    box-shadow: inset 0 0 0 8px rgba(255,255,255,0.12);
+    overflow: hidden;
+  }
+  @keyframes lidOpen {
+    from { transform: scaleY(0.06); }
+    to { transform: scaleY(1); }
+  }
+  .mesh {
+    position: absolute; left: 12px; right: 12px; top: 12px; height: 48%;
+    border: 1px solid rgba(90,55,25,0.35);
+    border-radius: 6px;
+    background:
+      repeating-linear-gradient(0deg, transparent 0 9px, rgba(90,55,25,0.2) 9px 10px),
+      repeating-linear-gradient(90deg, transparent 0 9px, rgba(90,55,25,0.2) 9px 10px);
+  }
+  .case-hinge {
+    position: absolute; left: 12%; right: 12%; top: 48%; height: 7px;
+    background: var(--shell-dark);
+    border-radius: 4px;
+    z-index: 2;
+  }
+  .case-hinge::before, .case-hinge::after {
+    content: "";
+    position: absolute; top: -3px; width: 12px; height: 12px;
+    background: var(--gold);
+    border: 1px solid #6a5018;
+    border-radius: 50%;
+  }
+  .case-hinge::before { left: 42%; }
+  .case-hinge::after { right: 42%; }
+  .case-body {
+    position: absolute; left: 10%; right: 10%; top: 49%; bottom: 18px;
+    background: linear-gradient(180deg, #d4b27a, #b8894e);
+    border: 2.5px solid var(--shell-dark);
+    border-radius: 4px 4px 16px 16px;
+    box-shadow: 0 16px 24px var(--shadow);
+    overflow: hidden;
+    padding: 12px 10px 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .slot {
+    border: 1.5px dashed rgba(90,55,25,0.35);
+    border-radius: 6px;
+    min-height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 8px; color: rgba(90,55,25,0.55);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: rgba(255,250,243,0.2);
+    transition: 0.35s ease;
+  }
+  .slot.filled {
+    border-style: solid;
+    border-color: rgba(90,55,25,0.4);
+    color: var(--white);
+    font-weight: 600;
+    background: var(--ocean);
+    box-shadow: inset 0 -3px 0 rgba(0,0,0,0.15);
+    animation: popSlot 0.45s cubic-bezier(.2,1.4,.3,1);
+  }
+  .slot.filled:nth-child(2) { background: #c45c38; }
+  .slot.filled:nth-child(3) { background: #3d6b4f; }
+  .slot.filled:nth-child(4) { background: #8b5a2b; }
+  .slot.filled:nth-child(5) { background: #1d4f8a; }
+  .slot.filled:nth-child(6) { background: #6b3f2e; }
+  @keyframes popSlot {
+    from { transform: scale(0.6); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  .case-handle {
+    position: absolute; left: 36%; right: 36%; bottom: 0; height: 16px;
+    border: 4px solid var(--shell-dark);
+    border-top: 0;
+    border-radius: 0 0 10px 10px;
+  }
+  .wheel {
+    position: absolute; bottom: 2px; width: 16px; height: 16px;
+    background: #2a2118;
+    border-radius: 50%;
+    border: 2px solid #111;
+    box-shadow: inset 0 0 0 3px #555;
+  }
+  .wheel.l { left: 16%; }
+  .wheel.r { right: 16%; }
+  .case-tag {
+    position: absolute; right: 6%; top: 52%;
+    width: 30px; height: 18px;
+    background: var(--gold);
+    border: 1px solid #8a6a20;
+    font-size: 6px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    transform-origin: left top;
+    animation: sway 3.6s 0.4s ease-in-out infinite;
+  }
+
+  .peek {
+    display: block;
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-top: 3px;
+    font-weight: 400;
+  }
+  .bag:hover { transform: translateY(-6px); }
+  .bag:hover .peek { color: var(--ocean-deep); }
+
+  .inside { display: none; }
+  .table.is-open .bags { display: none; }
+  .table.is-open .inside { display: block; }
+  @keyframes openInside {
+    from { opacity: 0; transform: translateY(28px) scale(0.94); }
+    to { opacity: 1; transform: none; }
+  }
+  .inside-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .inside-bar h2 { font-size: 22px; font-weight: 640; flex: 1; margin: 0; }
+  .inside-bar .count { font-size: 13px; color: var(--ink-soft); }
+  .back {
+    appearance: none;
+    border: 1.5px solid rgba(31,24,16,0.2);
+    background: var(--white);
+    color: var(--ink);
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-weight: 500;
+    font-size: 13px;
+  }
+  .back:hover { background: var(--sand); }
+
+  .interior {
+    position: relative;
+    min-height: 340px;
+  }
+  .interior.opening { animation: openInside 0.55s cubic-bezier(.2,1.25,.3,1) both; }
+  .things {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-content: flex-start;
+    min-height: 220px;
+  }
+  .thing {
+    appearance: none;
+    border: 0;
+    flex: 1 1 150px;
+    max-width: 230px;
+    background: var(--white);
+    color: var(--ink);
+    border-radius: 12px;
+    padding: 12px 12px 14px;
+    text-align: left;
+    box-shadow: 2px 3px 0 rgba(0,0,0,0.12), 0 8px 16px rgba(40,28,16,0.1);
+    cursor: pointer;
+    transform: rotate(var(--tilt, 0deg));
+    position: relative;
+    transition: transform 0.25s cubic-bezier(.2,1.2,.2,1), box-shadow 0.25s ease;
+  }
+  .thing.fresh { animation: thingDrop 0.55s cubic-bezier(.2,1.4,.3,1) both; }
+  @keyframes thingDrop {
+    from { opacity: 0; transform: translateY(-36px) scale(0.75) rotate(12deg); }
+    to { opacity: 1; transform: rotate(var(--tilt, 0deg)) scale(1); }
+  }
+  .thing:hover, .thing:focus-visible {
+    transform: rotate(0deg) translateY(-5px) scale(1.04);
+    box-shadow: 0 14px 24px rgba(40,28,16,0.18);
+    z-index: 2;
+    outline: none;
+  }
+  .thing:hover .pull, .thing:focus-visible .pull { opacity: 1; }
+  .thing .ico {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: var(--sand);
+    display: grid; place-items: center;
+    margin-bottom: 8px;
+  }
+  .thing .ico svg { width: 20px; height: 20px; }
+  .thing b { display: block; font-weight: 600; font-size: 14px; line-height: 1.25; }
+  .thing em { display: block; font-style: normal; font-size: 11px; color: var(--ink-soft); margin-top: 3px; }
+  .thing .pull {
+    display: block;
+    margin-top: 8px;
+    font-size: 11px;
+    color: var(--coral);
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  .inside-empty {
+    width: 100%;
+    text-align: center;
+    padding: 56px 16px;
+    font-family: Fraunces, Georgia, serif;
+    font-size: 22px;
+    color: var(--ink);
+  }
+  .inside-empty p { font-family: Outfit, sans-serif; font-size: 14px; color: var(--ink-soft); margin-top: 8px; }
+  .inside-hint {
+    text-align: center;
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 12px;
+  }
+
+  /* Open wallet */
+  .interior.docs {
+    background: linear-gradient(145deg, #7a4a36, #6b3f2e 45%, #4a2a1e);
+    border: 3px solid #3a2016;
+    border-radius: 22px;
+    box-shadow: 0 18px 30px var(--shadow);
+    padding: 16px;
+  }
+  .interior.docs .things {
+    background: #c9ae86;
+    border-radius: 14px;
+    padding: 16px;
+    min-height: 280px;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.18);
+  }
+  .interior.docs .thing {
+    background: #fffaf3;
+    border: 1px solid #d9d0c0;
+    border-radius: 3px 8px 8px 3px;
+    box-shadow: 3px 3px 0 #e8e0d4, 5px 5px 0 rgba(0,0,0,0.08);
+  }
+  .interior.docs .thing[data-icon="passport"] {
+    background: linear-gradient(160deg, #1d4f8a, #163a68);
+    color: #f0e6c8;
+    border-color: #0f2748;
+  }
+  .interior.docs .thing[data-icon="passport"] em,
+  .interior.docs .thing[data-icon="passport"] .pull { color: #e8d5a0; }
+  .interior.docs .thing[data-icon="passport"] .ico { background: rgba(255,250,243,0.15); }
+  .interior.docs .thing[data-icon="ticket"] {
+    border: 1.5px solid var(--ink);
+    background:
+      linear-gradient(90deg, transparent 10px, transparent 10px),
+      #fffaf3;
+    padding-left: 22px;
+  }
+  .interior.docs .thing[data-icon="ticket"]::before {
+    content: "";
+    position: absolute;
+    left: 10px; top: 8px; bottom: 8px;
+    border-left: 1.5px dashed #b0a696;
+  }
+
+  /* Open carry-on, looking down */
+  .interior.carry {
+    background: linear-gradient(180deg, #4a7a73, #2d4e4a);
+    border: 3px solid #1d3230;
+    border-radius: 32px 32px 42px 42px;
+    box-shadow: inset 0 22px 0 #1a2c2a, 0 18px 30px var(--shadow);
+    padding: 40px 18px 22px;
+  }
+  .interior.carry::before {
+    content: "";
+    position: absolute;
+    left: 18px; right: 18px; top: 14px;
+    height: 14px;
+    border-radius: 8px;
+    background: repeating-linear-gradient(90deg, #d4a24a 0 7px, #1d3230 7px 11px);
+  }
+  .interior.carry .things {
+    background: rgba(20, 30, 28, 0.28);
+    border-radius: 20px;
+    padding: 14px;
+    min-height: 260px;
+  }
+  .interior.carry .thing { background: #f3efe4; }
+  .interior.carry .inside-empty { color: var(--white); }
+  .interior.carry .inside-empty p { color: rgba(255,250,243,0.75); }
+
+  /* Open suitcase */
+  .interior.case {
+    background: linear-gradient(180deg, #d4b27a, #b8894e);
+    border: 3px solid var(--shell-dark);
+    border-radius: 8px 8px 24px 24px;
+    box-shadow: inset 0 0 0 9px rgba(255,250,243,0.1), 0 18px 30px var(--shadow);
+    padding: 0 0 16px;
+    overflow: hidden;
+  }
+  .interior-lid {
+    height: 92px;
+    margin: 0;
+    background: linear-gradient(180deg, #e0c38a, var(--shell));
+    border-bottom: 3px solid var(--shell-dark);
+    border-radius: 4px 4px 0 0;
+    position: relative;
+    transform-origin: top center;
+    transform: scaleY(1);
+    box-shadow: inset 0 0 0 8px rgba(255,255,255,0.12);
+  }
+  .interior-lid.swinging { animation: lidSwing 0.85s cubic-bezier(.2,1.35,.3,1) both; }
+  @keyframes lidSwing {
+    from { transform: scaleY(0.08); }
+    to { transform: scaleY(1); }
+  }
+  .interior-lid .mesh {
+    position: absolute;
+    left: 16px; right: 16px; top: 14px; bottom: 14px;
+    height: auto;
+  }
+  .interior-hinge {
+    height: 8px;
+    background: var(--shell-dark);
+    position: relative;
+    z-index: 2;
+  }
+  .interior-hinge::before, .interior-hinge::after {
+    content: "";
+    position: absolute; top: -4px; width: 14px; height: 14px;
+    background: var(--gold);
+    border: 1px solid #6a5018;
+    border-radius: 50%;
+  }
+  .interior-hinge::before { left: 28%; }
+  .interior-hinge::after { right: 28%; }
+  .interior.case .things {
+    padding: 16px 16px 8px;
+    min-height: 240px;
+  }
+
+
+  /* Tray */
+  .tray {
+    margin-top: 22px;
+    background: var(--paper);
+    border-radius: 20px;
+    padding: 18px 18px 22px;
+    box-shadow: inset 0 1px 0 #fff, 0 8px 20px rgba(40,28,16,0.08);
+    min-height: 180px;
+  }
+  .tray-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .tray-head h2 { font-size: 22px; font-weight: 640; }
+  .tray-head p { font-size: 13px; color: var(--ink-soft); }
+  .group { margin-bottom: 14px; }
+  .group h3 {
+    font-family: Outfit, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .chip {
+    appearance: none;
+    border: 1.5px solid rgba(31,24,16,0.14);
+    background: var(--white);
+    color: var(--ink);
+    border-radius: 14px;
+    padding: 10px 12px 10px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+    max-width: 100%;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.3s ease;
+    animation: chipIn 0.45s cubic-bezier(.2,1.1,.2,1) both;
+  }
+  @keyframes chipIn {
+    from { opacity: 0; transform: translateY(8px) scale(0.96); }
+    to { opacity: 1; transform: none; }
+  }
+  .chip:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(40,28,16,0.12);
+    border-color: var(--ocean);
+  }
+  .chip:active { transform: scale(0.97); }
+  .chip .ico {
+    width: 34px; height: 34px; flex: none;
+    border-radius: 10px;
+    background: var(--sand);
+    display: grid; place-items: center;
+  }
+  .chip .ico svg { width: 20px; height: 20px; }
+  .chip b { display: block; font-weight: 600; font-size: 13.5px; line-height: 1.2; }
+  .chip em { display: block; font-style: normal; font-size: 11px; color: var(--ink-soft); margin-top: 2px; max-width: 260px; }
+
+  .empty-tray {
+    text-align: center;
+    padding: 28px 10px;
+    font-family: Fraunces, serif;
+    font-size: 22px;
+  }
+  .empty-tray p { font-family: Outfit, sans-serif; font-size: 14px; color: var(--ink-soft); margin-top: 6px; }
+
+  .ghost {
+    position: fixed;
+    z-index: 80;
+    pointer-events: none;
+    margin: 0;
+    will-change: transform, opacity;
+  }
+
+  .actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+  .linkish {
+    background: none;
+    border: 0;
+    color: var(--ink-soft);
+    font-size: 12px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    padding: 6px;
+  }
+  .linkish:hover { color: var(--ink); }
+
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--ink);
+    color: var(--white);
+    padding: 12px 18px;
+    border-radius: 999px;
+    font-size: 14px;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s cubic-bezier(.2,1.1,.2,1);
+    z-index: 90;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  .celebrate {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 70;
+    overflow: hidden;
+  }
+  .dot {
+    position: absolute;
+    width: 8px; height: 10px;
+    top: -12px;
+    animation: fall 1.6s ease-in forwards;
+    border-radius: 1px;
+  }
+  @keyframes fall {
+    to { transform: translateY(110vh) rotate(360deg); opacity: 0.2; }
+  }
+
+  dialog {
+    border: 0;
+    border-radius: 20px;
+    padding: 28px 28px 22px;
+    max-width: 480px;
+    width: calc(100% - 32px);
+    background: var(--paper);
+    color: var(--ink);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.28);
+  }
+  dialog::backdrop { background: rgba(20,14,8,0.45); }
+  dialog h2 { font-size: 26px; margin-bottom: 10px; }
+  dialog p, dialog li { font-size: 14px; line-height: 1.55; color: var(--ink-soft); }
+  dialog ul { padding-left: 18px; margin: 10px 0 16px; }
+  dialog a { color: var(--ocean-deep); }
+  dialog .close {
+    background: var(--ink);
+    color: var(--white);
+    border: 0;
+    border-radius: 999px;
+    padding: 10px 16px;
+    font-weight: 500;
+  }
+
+  .fab-row {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    display: flex;
+    gap: 8px;
+    z-index: 50;
+  }
+  .fab {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    border: 0;
+    background: var(--ink);
+    color: var(--white);
+    font-size: 18px;
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  }
+  .fab:hover { background: var(--ocean-deep); }
+
+  .persist {
+    max-width: 1100px;
+    margin: 12px auto 0;
+    padding: 0 16px;
+  }
+  .persist-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 16px;
+    padding: 12px 16px;
+    box-shadow: 0 8px 20px rgba(40,28,16,0.1);
+  }
+  .persist-bar.ok { background: #e7f3eb; }
+  .persist-bar p { flex: 1; font-size: 14px; line-height: 1.4; min-width: 200px; }
+  .persist-bar .primary {
+    appearance: none;
+    border: 0;
+    background: var(--ink);
+    color: var(--white);
+    border-radius: 999px;
+    padding: 10px 16px;
+    font-weight: 600;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .persist-bar .primary:hover { background: var(--ocean-deep); }
+
+
+  .hint { display: none; }
+
+  body.settled .bag[data-bag] .visual { animation: none; }
+  body.settled .bag.catch .visual { animation: catch 0.45s cubic-bezier(.2,1.4,.3,1); }
+  body.settled .case-lid { transform: scaleY(1); animation: none; }
+  body.settled .passport-page { transform: rotateY(0) rotate(8deg); opacity: 1; animation: none; }
+  body.settled .boarding { transform: rotate(-4deg); opacity: 1; animation: none; }
+  body.settled .carry-mouth { height: 28px; animation: none; }
+  body.settled .zip-pull { animation: none; transform: none; }
+  body.settled .wallet-tag, body.settled .case-tag { animation: sway 3.4s ease-in-out infinite; }
+
+  @media (max-width: 800px) {
+    header { flex-direction: column; align-items: flex-start; padding-top: 18px; }
+    .bags { grid-template-columns: 1fr; min-height: 0; gap: 20px; }
+    .bag { min-height: 280px; }
+    .bag.focused { transform: none; }
+    h1 { font-size: 30px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div>
+      <p class="eyebrow">6 december 2026 · Schiphol 20:30</p>
+      <h1>Inpakken voor Bali</h1>
+    </div>
+    <div class="stats">
+      <div class="days"><strong id="days">–</strong><span>tot vertrek</span></div>
+      <div class="ring-wrap">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="26" fill="none" stroke="rgba(255,250,243,0.2)" stroke-width="6"/>
+          <circle id="ring" cx="32" cy="32" r="26" fill="none" stroke="#e8c07a" stroke-width="6" stroke-linecap="round" stroke-dasharray="163.4" stroke-dashoffset="163.4"/>
+        </svg>
+        <em id="pct">0%</em>
+      </div>
+    </div>
+  </header>
+
+  <div class="persist" id="persistWrap">
+    <div class="persist-bar" id="persistBar">
+      <p id="persistMsg">In een los bestand onthoudt je browser vinkjes vaak niet. Bewaar het op je computer en open vanaf dan altijd díe kopie.</p>
+      <button type="button" class="primary" id="saveBtn">Bewaar op mijn computer</button>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <div class="table">
+      <div class="bags" id="bags"></div>
+      <div class="inside" id="inside" hidden></div>
+      <div class="tray">
+        <div class="tray-head">
+          <h2 id="trayTitle">Nog in te pakken</h2>
+          <p id="traySub">Tik op een item, het vliegt de tas in. Tik op een tas of koffer om naar binnen te kijken.</p>
+        </div>
+        <div id="tray"></div>
+        <div class="actions">
+          <button class="linkish" id="packGroup" hidden>Pak alles in deze tas</button>
+          <button class="linkish" id="reset">Opnieuw beginnen</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fab-row">
+    <button class="fab" id="infoBtn" title="Reisinfo" aria-label="Reisinfo">i</button>
+  </div>
+  <div class="toast" id="toast"></div>
+  <div class="celebrate" id="celebrate" hidden></div>
+
+  <dialog id="info">
+    <h2>Goed om te weten</h2>
+    <p>Je paspoort moet bij aankomst op 7 december nog minstens 6 maanden geldig zijn, dus tot 7 juni 2027. Een e-VOA van 30 dagen dekt je verblijf tot 3 januari.</p>
+    <ul>
+      <li>e-VOA (IDR 500.000, ongeveer €30): <a href="https://evisa.imigrasi.go.id/" target="_blank" rel="noopener">evisa.imigrasi.go.id</a></li>
+      <li>Toeristenbelasting Bali (IDR 150.000, ongeveer €9): <a href="https://lovebali.baliprov.go.id/" target="_blank" rel="noopener">lovebali.baliprov.go.id</a></li>
+      <li>Aankomstkaart, gratis, vanaf 4 december: <a href="https://allindonesia.imigrasi.go.id" target="_blank" rel="noopener">allindonesia.imigrasi.go.id</a></li>
+      <li>Internationaal rijbewijs model 1968 bij de ANWB. Voor een scooter heb je categorie A, A1 of A2 nodig; alleen B is niet genoeg.</li>
+      <li>Handbagage Xiamen Economy: 1 stuk, max 8 kg, 55 × 40 × 20 cm. Powerbank in de handbagage, niet in de koffer.</li>
+    </ul>
+    <p>Klik op “Bewaar op mijn computer” en open volgende keer altijd díe opgeslagen kopie. Alleen dan blijven je vinkjes staan.</p>
+    <p style="margin:14px 0 18px"><a href="https://www.google.com/maps/d/u/0/edit?mid=1o7kap2QnHbP-wxrq1wWE0RIbkjkM5T0" target="_blank" rel="noopener">Bali-verblijfkaart</a>
+      · <a href="https://cursor.com/canvas/store-0fb1b354-a97f-4087-b1c4-ea4069defe81/1410f72d-71d3-4434-ae5b-4580edc51be6" target="_blank" rel="noopener">Budgetcalculator</a>
+      · <a href="https://www.anwb.nl/vakantie/indonesie/reisvoorbereiding/reisdocumenten" target="_blank" rel="noopener">ANWB reisdocumenten</a></p>
+    <button class="close" id="closeInfo">Sluiten</button>
+  </dialog>
+
+<script id="bali-save" type="application/json">{"v":1,"updated":0,"state":{}}</script>
+<script>
+const STORAGE = "bali-inpakken-v1";
+const BAGS = {
+  docs: { name: "Documenten", verb: "geregeld" },
+  carry: { name: "Handbagage", verb: "gepakt" },
+  case: { name: "Koffer", verb: "gepakt" },
+};
+const ITEMS = [
+  { id:"tickets", bag:"docs", label:"Vliegtickets", detail:"Xiamen HF5HPK · MF812 · stoel 66A", def:true, icon:"ticket" },
+  { id:"passport", bag:"docs", label:"Paspoort gecontroleerd", detail:"Geldig tot minstens 7 juni 2027, onbeschadigd", icon:"passport" },
+  { id:"passport-copy", bag:"docs", label:"Kopie paspoort", detail:"KopieID-app en een digitale kopie", icon:"copy" },
+  { id:"stay-1", bag:"docs", label:"Verblijf eerste 2 weken", detail:"Dicht bij Kyra's school in Denpasar", icon:"house" },
+  { id:"stay-2", bag:"docs", label:"Verblijf 18 dec–2 jan", detail:"Tweede periode, 16 nachten", icon:"house" },
+  { id:"license", bag:"docs", label:"Nederlands rijbewijs", detail:"Meenemen naast het internationale rijbewijs", icon:"card" },
+  { id:"idp", bag:"docs", label:"Internationaal rijbewijs", detail:"Model 1968, ophalen bij de ANWB", icon:"card" },
+  { id:"insurance", bag:"docs", label:"Reisverzekering", detail:"Inclusief repatriëring, check scooterdekking", icon:"shield" },
+  { id:"cards", bag:"docs", label:"Bankpas en creditcard", detail:"Eventueel je bank inlichten", icon:"card" },
+  { id:"evoa", bag:"docs", label:"e-VOA aangevraagd", detail:"evisa.imigrasi.go.id · ongeveer €30", icon:"stamp" },
+  { id:"levy", bag:"docs", label:"Toeristenbelasting betaald", detail:"lovebali.baliprov.go.id · ongeveer €9", icon:"stamp" },
+  { id:"arrival", bag:"docs", label:"Aankomstkaart All Indonesia", detail:"Gratis, invullen vanaf 4 december", icon:"qr" },
+  { id:"bz", bag:"docs", label:"Informatieservice Buitenlandse Zaken", detail:"Meld je aan voor updates", icon:"bell" },
+  { id:"checkin", bag:"docs", label:"Online inchecken", detail:"Xiamen Airlines, rond 4 of 5 december", icon:"ticket" },
+  { id:"hb-docs", bag:"carry", label:"Paspoort en QR-codes", detail:"Visum, Love Bali en aankomstkaart", icon:"passport" },
+  { id:"hb-tickets", bag:"carry", label:"Tickets bij de hand", detail:"Digitaal en eventueel uitgeprint", icon:"ticket" },
+  { id:"hb-wallet", bag:"carry", label:"Portemonnee", detail:"Bankpas, creditcard en wat cash", icon:"card" },
+  { id:"hb-phone", bag:"carry", label:"Telefoon en oplader", detail:"", icon:"phone" },
+  { id:"hb-powerbank", bag:"carry", label:"Powerbank", detail:"Verplicht in de handbagage", icon:"battery" },
+  { id:"hb-laptop", bag:"carry", label:"Laptop en oplader", detail:"Voor je onlinemodule", icon:"laptop" },
+  { id:"hb-audio", bag:"carry", label:"Oordopjes en slaapmasker", detail:"Lange vlucht via Xiamen", icon:"audio" },
+  { id:"hb-meds", bag:"carry", label:"Vaste medicijnen", detail:"Originele verpakking en recept", icon:"pill" },
+  { id:"hb-spare", bag:"carry", label:"Reservekleding", detail:"Shirt, ondergoed en sokken", icon:"shirt" },
+  { id:"hb-toiletries", bag:"carry", label:"Toiletzakje 100 ml", detail:"Voor in de handbagage", icon:"bottle" },
+  { id:"hb-glasses", bag:"carry", label:"Zonnebril", detail:"", icon:"sun" },
+  { id:"hb-bottle", bag:"carry", label:"Lege fles", detail:"Vullen na de security", icon:"bottle" },
+  { id:"k-shirts", bag:"case", label:"Lichte T-shirts", detail:"Voor ongeveer twee weken", icon:"shirt" },
+  { id:"k-shorts", bag:"case", label:"Korte broeken", detail:"", icon:"shorts" },
+  { id:"k-temple", bag:"case", label:"Kleding voor tempels", detail:"Lange broek en shirt met mouwen", icon:"shirt" },
+  { id:"k-underwear", bag:"case", label:"Ondergoed en sokken", detail:"", icon:"shirt" },
+  { id:"k-swim", bag:"case", label:"Twee zwembroeken", detail:"", icon:"swim" },
+  { id:"k-rain", bag:"case", label:"Regenjas", detail:"December is regenseizoen", icon:"rain" },
+  { id:"k-hoodie", bag:"case", label:"Licht vest of hoodie", detail:"Voor in het vliegtuig", icon:"shirt" },
+  { id:"k-flipflops", bag:"case", label:"Slippers", detail:"", icon:"shoe" },
+  { id:"k-hat", bag:"case", label:"Pet", detail:"", icon:"hat" },
+  { id:"t-clothes", bag:"case", label:"Trainingsshirts en shorts", detail:"", icon:"shirt" },
+  { id:"t-shoes", bag:"case", label:"Trainingschoenen", detail:"", icon:"shoe" },
+  { id:"t-underwear", bag:"case", label:"Sportondergoed", detail:"", icon:"shirt" },
+  { id:"t-band", bag:"case", label:"Weerstandsband of springtouw", detail:"Optioneel", icon:"band" },
+  { id:"v-sunscreen", bag:"case", label:"Zonnebrandcrème", detail:"Factor 30 of hoger", icon:"sun" },
+  { id:"v-mosquito", bag:"case", label:"Muggenmiddel", detail:"", icon:"leaf" },
+  { id:"v-toiletries", bag:"case", label:"Toiletartikelen", detail:"De grotere flessen", icon:"bottle" },
+  { id:"v-firstaid", bag:"case", label:"EHBO", detail:"Pleisters, pijnstiller, ORS, buikklachten", icon:"cross" },
+  { id:"v-meds", bag:"case", label:"Extra medicijnen", detail:"Voor de hele periode", icon:"pill" },
+  { id:"v-aftersun", bag:"case", label:"Aftersun", detail:"", icon:"sun" },
+];
+
+const SLOT_LABELS = ["Kleding","Broeken","Training","Verzorging","Schoenen","Regenjas"];
+const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function defaultState() {
+  const s = {};
+  ITEMS.forEach((it) => { if (it.def) s[it.id] = true; });
+  return s;
+}
+
+let storageBlocked = false;
+let fileHandle = null;
+let lastWritten = 0;
+let dirty = false;
+
+function unwrap(raw) {
+  if (!raw) return null;
+  const data = typeof raw === "string" ? JSON.parse(raw) : raw;
+  if (data && data.state && typeof data.state === "object") return data;
+  if (data && typeof data === "object") return { v: 1, updated: 0, state: data };
+  return null;
+}
+function isUseful(data) {
+  if (!data || !data.state) return false;
+  if (data.updated) return true;
+  return Object.keys(data.state).some((k) => data.state[k]);
+}
+function readBuiltin() {
+  const el = document.getElementById("bali-save");
+  if (!el) return null;
+  try {
+    const text = (el.textContent || "").trim();
+    if (!text || text === "{}") return null;
+    return unwrap(text);
+  } catch (e) { return null; }
+}
+function readLocal() {
+  try {
+    const raw = localStorage.getItem(STORAGE) || localStorage.getItem("bali-inpakken-v1");
+    if (!raw) return null;
+    return unwrap(raw);
+  } catch (e) {
+    storageBlocked = true;
+    return null;
+  }
+}
+function snapshot() {
+  return { v: 1, updated: Date.now(), state: { ...state } };
+}
+function writeBuiltin(data) {
+  const el = document.getElementById("bali-save");
+  if (el) el.textContent = JSON.stringify(data).replace(/</g, "\\u003c");
+}
+function load() {
+  const def = defaultState();
+  const ls = readLocal();
+  const bn = readBuiltin();
+  const candidates = [ls, bn].filter((d) => d && isUseful(d));
+  if (!candidates.length) return def;
+  candidates.sort((a, b) => (b.updated || 0) - (a.updated || 0));
+  return { ...def, ...candidates[0].state };
+}
+function save() {
+  const data = snapshot();
+  dirty = true;
+  try { localStorage.setItem(STORAGE, JSON.stringify(data)); }
+  catch (e) { storageBlocked = true; }
+  writeBuiltin(data);
+  if (fileHandle) {
+    persistToFile().then((ok) => {
+      if (ok) { dirty = false; lastWritten = data.updated; updatePersistBar(); }
+    });
+  }
+  updatePersistBar();
+}
+function needsFileSave() {
+  return location.protocol !== "http:" && location.protocol !== "https:";
+}
+function updatePersistBar() {
+  const wrap = document.getElementById("persistWrap");
+  const bar = document.getElementById("persistBar");
+  const msg = document.getElementById("persistMsg");
+  const btn = document.getElementById("saveBtn");
+  if (!wrap || !bar) return;
+  if (!needsFileSave() && !storageBlocked) {
+    wrap.hidden = true;
+    return;
+  }
+  wrap.hidden = false;
+  btn.hidden = false;
+  if (dirty) {
+    bar.classList.remove("ok");
+    msg.textContent = "Je hebt nieuwe vinkjes. Bewaar het bestand, anders verdwijnen ze als je dit sluit.";
+    btn.textContent = "Bewaar voortgang";
+  } else if (lastWritten || isUseful(readBuiltin())) {
+    bar.classList.add("ok");
+    msg.textContent = "Voortgang staat in dit bestand. Open volgende keer altijd díe opgeslagen kopie, niet een nieuw bestand uit de chat.";
+    btn.textContent = "Opnieuw bewaren";
+  } else {
+    bar.classList.remove("ok");
+    msg.textContent = "In een los bestand onthoudt je browser vinkjes vaak niet. Bewaar het op je computer en open vanaf dan altijd díe kopie.";
+    btn.textContent = "Bewaar op mijn computer";
+  }
+}
+function cleanForSerialize() {
+  document.querySelectorAll(".ghost").forEach((g) => g.remove());
+  const toastEl = document.getElementById("toast");
+  if (toastEl) toastEl.classList.remove("show");
+  const cel = document.getElementById("celebrate");
+  if (cel) { cel.hidden = true; cel.innerHTML = ""; }
+  const info = document.getElementById("info");
+  if (info && info.open) info.close();
+}
+function serializePage() {
+  writeBuiltin(snapshot());
+  cleanForSerialize();
+  return "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+}
+async function persistToFile() {
+  if (!fileHandle) return false;
+  try {
+    const writable = await fileHandle.createWritable();
+    await writable.write(serializePage());
+    await writable.close();
+    return true;
+  } catch (e) {
+    fileHandle = null;
+    return false;
+  }
+}
+async function saveToComputer() {
+  const html = serializePage();
+  try {
+    if (window.showSaveFilePicker) {
+      fileHandle = await window.showSaveFilePicker({
+        suggestedName: "Inpakken-voor-Bali.html",
+        types: [{ description: "HTML", accept: { "text/html": [".html"] } }]
+      });
+      const writable = await fileHandle.createWritable();
+      await writable.write(html);
+      await writable.close();
+      dirty = false;
+      lastWritten = Date.now();
+      updatePersistBar();
+      toast("Opgeslagen. Open vanaf nu altijd dit bestand.");
+      return;
+    }
+  } catch (e) {
+    if (e && e.name === "AbortError") return;
+    fileHandle = null;
+  }
+  const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+  const a = document.createElement("a");
+  const url = URL.createObjectURL(blob);
+  a.href = url;
+  a.download = "Inpakken-voor-Bali.html";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1500);
+  dirty = false;
+  lastWritten = Date.now();
+  updatePersistBar();
+  toast("Bestand gedownload. Open volgende keer díe kopie.");
+}
+
+let state = load();
+let openBag = null;
+let flying = false;
+let celebrated = false;
+let justPacked = null;
+let justOpened = false;
+
+function doneOf(bag) {
+  const list = ITEMS.filter((i) => (!bag || i.bag === bag));
+  return { done: list.filter((i) => state[i.id]).length, total: list.length };
+}
+
+function daysLeft() {
+  const depart = Date.parse("2026-12-06T20:30:00+01:00");
+  return Math.max(0, Math.ceil((depart - Date.now()) / 86400000));
+}
+
+function icon(name) {
+  const s = 'stroke="currentColor" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"';
+  const p = {
+    ticket: `<rect x="3" y="7" width="18" height="10" rx="2" ${s} /><path d="M7 7v10M17 7v10" ${s} />`,
+    passport: `<rect x="6" y="3" width="12" height="18" rx="2" ${s} /><circle cx="12" cy="10" r="2.5" ${s} />`,
+    copy: `<rect x="8" y="6" width="11" height="14" rx="2" ${s} /><rect x="5" y="3" width="11" height="14" rx="2" ${s} />`,
+    house: `<path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z" ${s} /><path d="M10 21v-6h4v6" ${s} />`,
+    card: `<rect x="3" y="6" width="18" height="12" rx="2" ${s} /><path d="M3 10h18" ${s} />`,
+    shield: `<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z" ${s} />`,
+    stamp: `<rect x="5" y="5" width="14" height="14" rx="3" ${s} /><path d="M9 12h6" ${s} />`,
+    qr: `<rect x="5" y="5" width="6" height="6" ${s} /><rect x="13" y="5" width="6" height="6" ${s} /><rect x="5" y="13" width="6" height="6" ${s} /><path d="M13 13h3v3h-3zM18 16v2M16 18h4" ${s} />`,
+    bell: `<path d="M6 16v-4a6 6 0 1 1 12 0v4l2 2H4z" ${s} /><path d="M10 20a2 2 0 0 0 4 0" ${s} />`,
+    phone: `<rect x="8" y="3" width="8" height="18" rx="2" ${s} /><path d="M11 18h2" ${s} />`,
+    battery: `<rect x="3" y="8" width="16" height="8" rx="2" ${s} /><path d="M19 11v2M7 10v4M10 10v4" ${s} />`,
+    laptop: `<rect x="3" y="5" width="18" height="12" rx="2" ${s} /><path d="M2 19h20" ${s} />`,
+    audio: `<path d="M4 14a3 3 0 0 0 3 3h1v-7H7a3 3 0 0 0-3 3zM16 10h1a3 3 0 0 1 3 3 3 3 0 0 1-3 3h-1z" ${s} /><path d="M8 10V8a4 4 0 0 1 8 0v2" ${s} />`,
+    pill: `<rect x="4" y="9" width="16" height="6" rx="3" ${s} /><path d="M12 9v6" ${s} />`,
+    shirt: `<path d="M4 7l5-3 3 2 3-2 5 3-2 3h-2v10H8V10H6z" ${s} />`,
+    shorts: `<path d="M6 6h12v6l-2 6H13l-1-5-1 5H8L6 12z" ${s} />`,
+    swim: `<path d="M4 14c2 2 4 2 6 0s4-2 6 0 4 2 6 0" ${s} /><path d="M6 10c2-3 4-3 6 0" ${s} />`,
+    rain: `<path d="M8 15a5 5 0 1 1 8.5-3.5A4 4 0 1 1 17 19H9" ${s} /><path d="M8 21v-1M12 22v-2M16 21v-1" ${s} />`,
+    shoe: `<path d="M4 16h12l4-2v4H4zM5 16V11l6-3 2 4" ${s} />`,
+    hat: `<path d="M4 16h16M8 16c0-4 2-7 4-7s4 3 4 7" ${s} />`,
+    band: `<path d="M6 8c4-3 8-3 12 0M6 16c4 3 8 3 12 0M6 8v8M18 8v8" ${s} />`,
+    sun: `<circle cx="12" cy="12" r="4" ${s} /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" ${s} />`,
+    leaf: `<path d="M5 19c8-1 13-8 14-15-8 1-14 8-14 15z" ${s} /><path d="M8 16c3-3 6-6 9-10" ${s} />`,
+    bottle: `<path d="M10 3h4v3l2 2v13a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V8l2-2z" ${s} />`,
+    cross: `<rect x="5" y="5" width="14" height="14" rx="3" ${s} /><path d="M12 8v8M8 12h8" ${s} />`,
+  };
+  return `<svg viewBox="0 0 24 24" aria-hidden="true">${p[name] || p.shirt}</svg>`;
+}
+
+function tilt(id) {
+  let h = 0;
+  for (const c of id) h = (h * 31 + c.charCodeAt(0)) | 0;
+  return ((Math.abs(h) % 7) - 3) + "deg";
+}
+
+function closeInside() {
+  openBag = null;
+  justOpened = false;
+  justPacked = null;
+  render();
+}
+
+function openInside(id) {
+  openBag = id;
+  justOpened = true;
+  justPacked = null;
+  render();
+}
+
+function renderBags() {
+  const root = document.getElementById("bags");
+  root.innerHTML = ["docs","carry","case"].map((id) => {
+    const { done, total } = doneOf(id);
+    const fill = total ? done / total : 0;
+    let visual = "";
+    if (id === "docs") {
+      const pass = state.passport || state.tickets;
+      visual = `<div class="visual" data-target="${id}">
+        <div class="wallet-body">
+          <div class="wallet-inner">
+            <div class="passport">${pass ? '<span class="crest"></span>PASPOORT' : ""}</div>
+            <div class="passport-page"></div>
+            ${state.tickets ? '<div class="boarding"><b>MF812</b>AMS → XMN<br>6 dec 20:30 · 66A</div>' : ""}
+          </div>
+        </div>
+        <div class="wallet-tag">NL</div>
+      </div>`;
+    } else if (id === "carry") {
+      const h = Math.round(fill * 42);
+      visual = `<div class="visual" data-target="${id}">
+        <div class="carry-strap"></div>
+        <div class="carry-handle"></div>
+        <div class="carry-body">
+          <div class="carry-fill" style="height:${h}%"></div>
+          <div class="carry-pocket"></div>
+        </div>
+        <div class="carry-mouth"><span></span></div>
+        <div class="zip-pull l"></div>
+        <div class="zip-pull r"></div>
+      </div>`;
+    } else {
+      const slots = SLOT_LABELS.map((lab, i) => {
+        const filled = fill > i / SLOT_LABELS.length;
+        return `<div class="slot${filled ? " filled" : ""}">${lab}</div>`;
+      }).join("");
+      visual = `<div class="visual" data-target="${id}">
+        <div class="case-lid"><div class="mesh"></div></div>
+        <div class="case-hinge"></div>
+        <div class="case-body">${slots}</div>
+        <div class="case-handle"></div>
+        <div class="wheel l"></div>
+        <div class="wheel r"></div>
+        <div class="case-tag">BALI</div>
+      </div>`;
+    }
+    return `<button class="bag" data-bag="${id}" type="button" aria-label="${BAGS[id].name}, ${done} van ${total}, tik om naar binnen te kijken">
+      ${visual}
+      <div class="label">${BAGS[id].name}<small>${done} van ${total} ${BAGS[id].verb}</small><span class="peek">Tik om naar binnen te kijken</span></div>
+    </button>`;
+  }).join("");
+
+  root.querySelectorAll(".bag").forEach((el) => {
+    el.addEventListener("click", () => openInside(el.getAttribute("data-bag")));
+  });
+}
+
+function renderInside() {
+  const el = document.getElementById("inside");
+  const table = document.querySelector(".table");
+  if (!openBag) {
+    el.hidden = true;
+    el.innerHTML = "";
+    table.classList.remove("is-open");
+    return;
+  }
+  el.hidden = false;
+  table.classList.add("is-open");
+  const packed = ITEMS.filter((i) => i.bag === openBag && state[i.id]);
+  const { done, total } = doneOf(openBag);
+  const titles = { docs: "In de documentenmap", carry: "In de handbagage", case: "In de koffer" };
+  const closeLbl = { docs: "Map dichtdoen", carry: "Tas dichtdoen", case: "Koffer dichtdoen" };
+
+  const things = packed.map((i) => {
+    const fresh = justOpened || justPacked === i.id ? " fresh" : "";
+    return `<button class="thing${fresh}" data-unpack="${i.id}" data-icon="${i.icon}" type="button" style="--tilt:${tilt(i.id)}">
+      <span class="ico">${icon(i.icon)}</span>
+      <b>${esc(i.label)}</b>
+      ${i.detail ? `<em>${esc(i.detail)}</em>` : ""}
+      <span class="pull">Eruit halen</span>
+    </button>`;
+  }).join("");
+
+  const empty = `<div class="inside-empty">Nog leeg<p>Pak iets in vanuit de bak hieronder, dan komt het hier te liggen.</p></div>`;
+
+  const lid = openBag === "case" ? `<div class="interior-lid${justOpened ? " swinging" : ""}"><div class="mesh"></div></div><div class="interior-hinge"></div>` : "";
+
+  el.innerHTML = `
+    <div class="inside-bar">
+      <button type="button" class="back" id="closeInside">${closeLbl[openBag]}</button>
+      <h2>${titles[openBag]}</h2>
+      <span class="count">${done} van ${total} ${BAGS[openBag].verb}</span>
+    </div>
+    <div class="interior ${openBag}${justOpened ? " opening" : ""}" id="insideTarget">
+      ${lid}
+      <div class="things">${things || empty}</div>
+    </div>
+    <p class="inside-hint">${packed.length ? "Tik op een item om het eruit te halen en terug in de bak te leggen." : ""}</p>
+  `;
+
+  const wasOpen = justOpened;
+  justOpened = false;
+  justPacked = null;
+
+  document.getElementById("closeInside").addEventListener("click", closeInside);
+  if (wasOpen) el.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+  el.querySelectorAll("[data-unpack]").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      unpack(btn.getAttribute("data-unpack"), btn);
+    });
+  });
+}
+
+function esc(t) {
+  return String(t).replace(/[&<>"]/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;" }[c]));
+}
+
+function renderTray() {
+  const root = document.getElementById("tray");
+  const title = document.getElementById("trayTitle");
+  const sub = document.getElementById("traySub");
+  const packBtn = document.getElementById("packGroup");
+  const focus = openBag;
+  const open = ITEMS.filter((i) => !state[i.id] && (!focus || i.bag === focus));
+  const all = doneOf(focus);
+  title.textContent = focus ? ("Nog in de " + BAGS[focus].name.toLowerCase()) : "Nog in te pakken";
+  sub.textContent = focus
+    ? (open.length ? "Tik op een item, het vliegt de " + BAGS[focus].name.toLowerCase() + " in." : "Deze is vol. Tik op “dichtdoen” om terug naar de tafel te gaan.")
+    : "Tik op een item, het vliegt de tas in. Tik op een tas of koffer om naar binnen te kijken.";
+  packBtn.hidden = !(focus && open.length);
+
+  if (!open.length) {
+    root.innerHTML = `<div class="empty-tray">${all.done === all.total && !focus ? "Je bent klaar voor Bali." : (focus ? "Deze is ingepakt." : "Je bent klaar voor Bali.")}<p>${!focus || all.done === doneOf().total ? "Fijn, alles staat afgevinkt." : "Pak de rest in een andere tas, of doe deze dicht."}</p></div>`;
+    return;
+  }
+  const groups = focus ? [focus] : ["docs","carry","case"];
+  root.innerHTML = groups.map((bag) => {
+    const items = open.filter((i) => i.bag === bag);
+    if (!items.length) return "";
+    return `<div class="group"><h3>${BAGS[bag].name}</h3><div class="chips">${
+      items.map((i) => `<button class="chip" data-pack="${i.id}" type="button">
+        <span class="ico">${icon(i.icon)}</span>
+        <span><b>${esc(i.label)}</b>${i.detail ? `<em>${esc(i.detail)}</em>` : ""}</span>
+      </button>`).join("")
+    }</div></div>`;
+  }).join("");
+
+  root.querySelectorAll("[data-pack]").forEach((el) => {
+    el.addEventListener("click", () => pack(el.getAttribute("data-pack"), el));
+  });
+}
+
+function renderStats() {
+  const all = doneOf();
+  const pct = all.total ? Math.round((all.done / all.total) * 100) : 0;
+  document.getElementById("pct").textContent = pct + "%";
+  const ring = document.getElementById("ring");
+  const circ = 2 * Math.PI * 26;
+  ring.style.strokeDasharray = circ.toFixed(1);
+  ring.style.strokeDashoffset = (circ * (1 - pct / 100)).toFixed(1);
+  const d = daysLeft();
+  document.getElementById("days").textContent = d;
+  if (pct === 100 && !celebrated) {
+    celebrated = true;
+    confetti();
+    toast("Alles is ingepakt. Fijne reis naar Bali.");
+  }
+}
+
+function render() {
+  renderBags();
+  renderInside();
+  renderTray();
+  renderStats();
+}
+
+function targetEl(bag) {
+  if (openBag === bag) {
+    const inside = document.getElementById("insideTarget");
+    if (inside) return inside;
+  }
+  return document.querySelector(`.visual[data-target="${bag}"]`);
+}
+
+function fly(fromEl, toEl, doneFn) {
+  if (reduced || !fromEl || !toEl) { doneFn(); return; }
+  const a = fromEl.getBoundingClientRect();
+  const b = toEl.getBoundingClientRect();
+  const ghost = fromEl.cloneNode(true);
+  ghost.classList.add("ghost");
+  ghost.style.top = a.top + "px";
+  ghost.style.left = a.left + "px";
+  ghost.style.width = a.width + "px";
+  ghost.style.height = a.height + "px";
+  document.body.appendChild(ghost);
+  fromEl.style.opacity = "0";
+  const dx = b.left + b.width / 2 - (a.left + a.width / 2);
+  const dy = b.top + b.height / 2 - (a.top + a.height / 2);
+  const anim = ghost.animate([
+    { transform: "translate(0,0) scale(1) rotate(0deg)", opacity: 1 },
+    { transform: `translate(${dx * 0.5}px, ${dy * 0.35 - 90}px) scale(0.9) rotate(10deg)`, opacity: 1, offset: 0.45 },
+    { transform: `translate(${dx}px, ${dy}px) scale(0.2) rotate(-12deg)`, opacity: 0.35 }
+  ], { duration: 720, easing: "cubic-bezier(.22,.9,.28,1)", fill: "forwards" });
+  anim.onfinish = () => { ghost.remove(); doneFn(); };
+}
+
+function pack(id, el) {
+  if (flying || state[id]) return;
+  const item = ITEMS.find((i) => i.id === id);
+  flying = true;
+  playSound(true);
+  fly(el, targetEl(item.bag), () => {
+    state[id] = true;
+    save();
+    flying = false;
+    justPacked = id;
+    if (openBag !== item.bag) {
+      // stay on the table; bag bounces as the item lands inside
+    }
+    render();
+    const bag = document.querySelector(`.bag[data-bag="${item.bag}"]`);
+    if (bag) {
+      bag.classList.add("catch");
+      setTimeout(() => bag.classList.remove("catch"), 480);
+    }
+    const { done, total } = doneOf(item.bag);
+    if (done === total) toast(BAGS[item.bag].name + " is compleet.");
+  });
+}
+
+function unpack(id, el) {
+  if (flying || !state[id]) return;
+  const item = ITEMS.find((i) => i.id === id);
+  flying = true;
+  playSound(false);
+  const tray = document.getElementById("tray");
+  fly(el, tray, () => {
+    state[id] = false;
+    save();
+    flying = false;
+    celebrated = false;
+    render();
+  });
+}
+
+function toast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toast._id);
+  toast._id = setTimeout(() => t.classList.remove("show"), 2400);
+}
+
+function confetti() {
+  const root = document.getElementById("celebrate");
+  root.hidden = false;
+  root.innerHTML = "";
+  const colors = ["#c45c38","#d4a24a","#1e6b6f","#3d6b4f","#f6efe2","#6b3f2e"];
+  for (let i = 0; i < 60; i++) {
+    const d = document.createElement("i");
+    d.className = "dot";
+    d.style.left = Math.random() * 100 + "%";
+    d.style.background = colors[i % colors.length];
+    d.style.animationDelay = (Math.random() * 0.5) + "s";
+    d.style.animationDuration = (1.2 + Math.random()) + "s";
+    d.style.transform = "rotate(" + (Math.random()*180) + "deg)";
+    root.appendChild(d);
+  }
+  setTimeout(() => { root.hidden = true; root.innerHTML = ""; }, 2800);
+}
+
+let audioCtx;
+function playSound(packIn) {
+  try {
+    audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.resume) audioCtx.resume();
+    const o = audioCtx.createOscillator();
+    const g = audioCtx.createGain();
+    o.type = "sine";
+    const t = audioCtx.currentTime;
+    if (packIn) {
+      o.frequency.setValueAtTime(420, t);
+      o.frequency.exponentialRampToValueAtTime(180, t + 0.12);
+    } else {
+      o.frequency.setValueAtTime(240, t);
+      o.frequency.exponentialRampToValueAtTime(360, t + 0.1);
+    }
+    g.gain.setValueAtTime(0.06, t);
+    g.gain.exponentialRampToValueAtTime(0.001, t + 0.13);
+    o.connect(g); g.connect(audioCtx.destination);
+    o.start(t); o.stop(t + 0.14);
+  } catch (e) {}
+}
+
+document.getElementById("reset").addEventListener("click", () => {
+  if (!confirm("Alles weer uit de tassen halen? Je vliegtickets gaan terug naar de map.")) return;
+  state = defaultState();
+  save();
+  celebrated = false;
+  openBag = null;
+  justPacked = null;
+  render();
+  toast("We beginnen opnieuw, tickets zitten al in de map.");
+});
+
+document.getElementById("packGroup").addEventListener("click", () => {
+  if (!openBag) return;
+  ITEMS.filter((i) => i.bag === openBag && !state[i.id]).forEach((i) => { state[i.id] = true; });
+  save();
+  justOpened = true;
+  render();
+  const bag = document.querySelector(`.bag[data-bag="${openBag}"]`);
+  if (bag) { bag.classList.add("catch"); setTimeout(() => bag.classList.remove("catch"), 480); }
+  toast(BAGS[openBag].name + " is compleet.");
+});
+
+const info = document.getElementById("info");
+document.getElementById("infoBtn").addEventListener("click", () => info.showModal());
+document.getElementById("closeInfo").addEventListener("click", () => info.close());
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && openBag && !(document.getElementById("info").open)) closeInside();
+});
+
+document.getElementById("saveBtn").addEventListener("click", () => saveToComputer());
+updatePersistBar();
+
+render();
+setTimeout(() => document.body.classList.add("settled"), 1600);
+</script>
+</body>
+</html>
